@@ -1,33 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
 
-    <!-- Bootstrap -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <button type="button" class="btn btn-default">Add a heart Honey! As much as you want!</button>
-
-    <div>
-      sadsd
-    </div>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js.js"></script>
-  </body>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Princip 1</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<style>
+		
+		* {	margin: 0; padding: 0 }
+		
+		body {
+			background: #eee;
+		}
+		
+		#stage {
+			width: 300px;
+			height: 300px;
+			margin: 50px auto;
+			background: #fff;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.running #ball {
+			width: 50px;
+			height: 50px;
+			background: #00f;
+			position: absolute;
+			bottom: 0;
+			left: 125px;
+			border-radius: 50px;
+			-webkit-animation: ball 5s;
+			-webkit-transform-origin: 50% 50%;
+			
+			-moz-animation: ball 5s;
+			-moz-transform-origin: 50% 50%;
+		}
+		
+		@-webkit-keyframes ball {
+			0% { -webkit-transform: translateY(-300px) scaleY(1.2); }
+			33% { -webkit-transform: translateY(0px) scaleY(1.2); }
+			35% { -webkit-transform: translateY(10px) scaleY(0.8); }
+			66% { -webkit-transform: translateY(-100px) scaleY(1.2); }
+			100% { -webkit-transform: translateY(0px); }
+		}
+		
+		@-moz-keyframes ball {
+			0% { -moz-transform: translateY(-300px) scaleY(1.2); }
+			33% { -moz-transform: translateY(0px) scaleY(1.2); }
+			35% { -moz-transform: translateY(10px) scaleY(0.8); }
+			66% { -moz-transform: translateY(-100px) scaleY(1.2); }
+			100% { -moz-transform: translateY(0px); }
+		}
+		
+		.trigger {
+			background: #ffffff;
+			background: -moz-linear-gradient(top, #ffffff 0%, #cccccc 100%);
+			background: -webkit-linear-gradient(top, #ffffff 0%,#cccccc 100%);
+			border: 1px solid #aaa;
+			font-family: helvetica, sans-serif;
+			font-size: 0.7em;
+			font-weight: bold;
+			text-decoration: none;
+			text-transform: lowercase;
+			text-align: center;
+			color: #333;
+			padding: 10px;
+			border-radius: 20px;
+			display: block;
+			margin: 0 auto;
+			width: 100px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 10px #fff;
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 10px #fff;
+		}
+		
+		.trigger:active {
+			background: -moz-linear-gradient(top, #bbbbbb 0%, #eeeeee 100%);
+			background: -webkit-linear-gradient(top, #bbbbbb 0%, #eeeeee 100%);
+			position: relative;
+			top: 2px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 5px rgba(0,0,0,0.1);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 5px rgba(0,0,0,0.1);
+			-webkit-transition: 0.1s;
+			-moz-transition: 0.1s;
+		}
+			
+		</style>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js" type="text/javascript"></script>
+		<script>
+		
+		$(document).ready(function() {
+		    $('#stage').addClass('running');
+		    
+		    $('.trigger').click(function() {
+		        $('#stage').removeClass('running').delay(10).queue(function(next){
+		            $(this).addClass('running');
+		            next();
+		        });
+		        return false;
+		    });
+		});
+		</script>
+		
+	</head>
+	<body>
+		<div id="stage">
+		
+		<div id="ball"></div>
+		
+		</div>
+		
+		<a class="trigger" href="#">Restartuj animaciju</a>
+	</body>
 </html>
