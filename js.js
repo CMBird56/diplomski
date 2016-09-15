@@ -1,6 +1,15 @@
 $(document).ready(function(){
-    $("h1").click(function(){
-        alert("sadas");
+    $("button").click(function(){
+    	$('body').prepend('<img src="123.jpg" />');
+        alert("Mwa!! Here is a kiss too sweetie!!");
+
+
+        $( "div" ).css( "background", "red" );
     });
+
+
+
+
+
 });
 
