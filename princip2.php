@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Princip 1</title>
+		<title>Princip 2: Iščekivanje</title>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 		<style>
 		
@@ -21,14 +21,16 @@
 			overflow: hidden;
 		}
 		
-		.running #ball {
+		.running #ball, .running #shadow {
 			width: 50px;
 			height: 50px;
 			background: #00f;
 			position: absolute;
-			bottom: 0;
+			bottom: 25px;
 			left: 125px;
 			border-radius: 50px;
+			z-index: 2;
+			
 			-webkit-animation: ball 5s;
 			-webkit-transform-origin: 50% 50%;
 			
@@ -36,19 +38,33 @@
 			-moz-transform-origin: 50% 50%;
 		}
 		
+		.running #shadow {
+			background: #000;
+			bottom: 0;
+			z-index: 1;
+			
+			-webkit-animation: none;
+			-webkit-transform: scaleY(0.5);
+			
+			-moz-animation: none;
+			-moz-transform: scaleY(0.5);
+		}
+		
 		@-webkit-keyframes ball {
 			0% { -webkit-transform: translateY(-300px) scaleY(1.2); }
-			33% { -webkit-transform: translateY(0px) scaleY(1.2); }
-			35% { -webkit-transform: translateY(10px) scaleY(0.8); }
-			66% { -webkit-transform: translateY(-100px) scaleY(1.2); }
+			35% { -webkit-transform: translateY(-300px) scaleY(1.2); }
+			65% { -webkit-transform: translateY(0px) scaleY(1.2); }
+			67% { -webkit-transform: translateY(10px) scaleY(0.8); }
+			85% { -webkit-transform: translateY(-100px) scaleY(1.2); }
 			100% { -webkit-transform: translateY(0px); }
 		}
 		
 		@-moz-keyframes ball {
 			0% { -moz-transform: translateY(-300px) scaleY(1.2); }
-			33% { -moz-transform: translateY(0px) scaleY(1.2); }
-			35% { -moz-transform: translateY(10px) scaleY(0.8); }
-			66% { -moz-transform: translateY(-100px) scaleY(1.2); }
+			35% { -moz-transform: translateY(-300px) scaleY(1.2); }
+			65% { -moz-transform: translateY(0px) scaleY(1.2); }
+			67% { -moz-transform: translateY(10px) scaleY(0.8); }
+			85% { -moz-transform: translateY(-100px) scaleY(1.2); }
 			100% { -moz-transform: translateY(0px); }
 		}
 		
@@ -107,6 +123,7 @@
 		<div id="stage">
 		
 		<div id="ball"></div>
+		<div id="shadow"></div>
 		
 		</div>
 		
